@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goungbe • Préservation & Ressources</title>
+  <meta name="description" content="Projet de préservation et de valorisation de la langue Goungbe/Gungbe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #fdfaf6; }
+    .hero-image {
+      background-image: url('images/toffa.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+<body class="text-neutral-800">
+
+  <!-- NAVIGATION PRINCIPALE -->
+  <header class="sticky top-0 z-50 bg-amber-50/90 backdrop-blur border-b border-amber-100">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="text-lg font-extrabold text-amber-700">
+        Goungbe • Préservation
+      </a>
+      <nav class="hidden md:flex gap-4 text-sm font-medium">
+        <a href="index.html" class="hover:text-amber-600">Accueil</a>
+        <a href="histoire.html" class="hover:text-amber-600">Histoire</a>
+        <a href="defis.html" class="hover:text-amber-600">Défis</a>
+        <a href="lexique.html" class="hover:text-amber-600">Lexique</a>
+        <a href="preservation.html" class="hover:text-amber-600">Préservation</a>
+        <a href="contribuer.html" class="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-lg shadow-sm">
+          Contribuer
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-image relative min-h-screen flex items-center justify-center text-center">
+    <div class="absolute inset-0 bg-white/40"></div>
+    <div class="relative max-w-3xl px-4">
+      <h1 class="font-['Playfair_Display'] text-5xl md:text-6xl font-extrabold leading-tight text-neutral-900 drop-shadow-sm">
+        Préservons le Goungbe
+      </h1>
+      <p class="mt-4 text-xl text-neutral-700 max-w-xl mx-auto">
+        Une langue vivante du Bénin et du Nigéria — découvrons, traduisons et partageons pour les générations futures.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="histoire.html" class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md transition">
+          Découvrir l'histoire
+        </a>
+        <a href="contribuer.html" class="bg-white text-amber-700 border border-amber-400 px-6 py-3 rounded-xl font-semibold hover:bg-amber-50 shadow-md transition">
+          🤝 Contribuer
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="max-w-6xl mx-auto px-4 py-16">
+    <section class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <a href="histoire.html" class="bg-white p-6 rounded-xl border border-amber-100 shadow hover:shadow-lg transition block">
+        <h3 class="font-semibold text-lg">📜 Histoire</h3>
+        <p class="mt-2 text-sm text-neutral-600">
+          Découvrez les origines de la langue et son importance culturelle.
+        </p>
+      </a>
+
+      <a href="defis.html" class="bg-white p-6 rounded-xl border border-amber-100 shadow hover:shadow-lg transition block">
+        <h3 class="font-semibold text-lg">⚠️ Défis</h3>
+        <p class="mt-2 text-sm text-neutral-600">
+          Les enjeux de la préservation et la nécessité d’agir dès maintenant.
+        </p>
+      </a>
+
+      <a href="lexique.html" class="bg-white p-6 rounded-xl border border-amber-100 shadow hover:shadow-lg transition block">
+        <h3 class="font-semibold text-lg">📖 Lexique Goun traduit</h3>
+        <p class="mt-2 text-sm text-neutral-600">
+          Consultez des mots et prénoms Goun, traduits en <strong>français</strong> et en <strong>anglais</strong>.
+        </p>
+      </a>
+
+      <a href="preservation.html" class="bg-white p-6 rounded-xl border border-amber-100 shadow hover:shadow-lg transition block">
+        <h3 class="font-semibold text-lg">🌱 Préservation</h3>
+        <p class="mt-2 text-sm text-neutral-600">
+          Découvrez les initiatives et ressources disponibles pour soutenir le Goungbe.
+        </p>
+      </a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-amber-50 border-t border-amber-100 mt-16">
+    <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-sm text-neutral-700">
+      <div>
+        <p class="font-semibold text-amber-800">Crédits</p>
+        <p class="mt-2">
+          Projet communautaire open-source, dédié à la documentation et la traduction du Goungbe.
+        </p>
+      </div>
+      <div>
+        <p class="font-semibold text-amber-800">Navigation</p>
+        <ul class="mt-2 space-y-1">
+          <li><a href="index.html" class="hover:text-amber-600">Accueil</a></li>
+          <li><a href="histoire.html" class="hover:text-amber-600">Histoire</a></li>
+          <li><a href="defis.html" class="hover:text-amber-600">Défis</a></li>
+          <li><a href="lexique.html" class="hover:text-amber-600">Lexique</a></li>
+          <li><a href="preservation.html" class="hover:text-amber-600">Préservation</a></li>
+          <li><a href="contribuer.html" class="hover:text-amber-600">Contribuer</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-amber-800">Contact</p>
+        <p class="mt-2">
+          📧 <a href="mailto:contact@goungbe.org" class="underline hover:text-amber-600">contact@goungbe.org</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

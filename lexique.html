@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lexique Goun traduit • Goungbe</title>
+  <meta name="description" content="Consultez des mots et prénoms Goun avec leurs traductions en français et en anglais.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #fdfaf6; }
+    table td, table th { border: 1px solid #e2e8f0; }
+    table thead th { background-color: #fde68a; position: sticky; top: 0; z-index: 10; }
+    table tbody tr:nth-child(even) { background-color: #fefcfb; }
+    table tbody tr:hover { background-color: #fff8eb; }
+    td:first-child { font-weight: 600; color: #92400e; }
+  </style>
+</head>
+<body class="text-neutral-800">
+
+  <!-- HEADER UNIFIÉ -->
+  <header class="sticky top-0 z-50 bg-amber-50/90 backdrop-blur border-b border-amber-100">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="text-lg font-extrabold text-amber-700">
+        Goungbe • Préservation
+      </a>
+      <nav class="hidden md:flex gap-4 text-sm font-medium">
+        <a href="index.html" class="hover:text-amber-600">Accueil</a>
+        <a href="histoire.html" class="hover:text-amber-600">Histoire</a>
+        <a href="defis.html" class="hover:text-amber-600">Défis</a>
+        <a href="lexique.html" class="text-amber-700 font-semibold">Lexique</a>
+        <a href="preservation.html" class="hover:text-amber-600">Préservation</a>
+        <a href="contribuer.html" class="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-lg shadow-sm">
+          Contribuer
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENU -->
+  <main class="max-w-5xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-extrabold text-amber-700 mb-6 text-center">Lexique Goun traduit</h1>
+    <p class="text-lg text-neutral-700 leading-relaxed text-center mb-8">
+      Découvrez plus de <strong>1900 mots</strong> et <strong>prénoms Goun</strong> soigneusement collectés 
+      et traduits en <strong>français</strong> et <strong>anglais</strong>. 
+      Cette base lexicale constitue l’une des grandes ressources numériques disponibles pour le Goungbe.
+    </p>
+
+    <!-- INDICATEUR DE CHARGEMENT -->
+    <div id="loading" class="text-center text-amber-700 mb-4">
+      ⏳ Chargement du lexique...
+    </div>
+
+    <!-- TABLEAU -->
+    <div class="overflow-x-auto shadow rounded-lg max-h-[70vh] overflow-y-auto">
+      <table class="w-full text-left bg-white">
+        <thead>
+          <tr>
+            <th class="p-3">Goungbe</th>
+            <th class="p-3">Français</th>
+            <th class="p-3">Anglais</th>
+          </tr>
+        </thead>
+        <tbody id="lexique-body">
+          <!-- Lignes injectées en JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- LIEN SOURCE DES DONNÉES -->
+    <div class="mt-8 bg-amber-50 border border-amber-200 rounded-lg p-4 text-center text-sm text-neutral-700 shadow-sm">
+      📚 <span class="font-medium">Source :</span> 
+      <a href="https://guw.wiktionary.org/wiki/Wikiwez%E1%BA%B9hom%E1%BA%B9:Weda_Tangan" target="_blank" class="underline hover:text-amber-700">
+        Wiktionary en Goungbe
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER UNIFIÉ -->
+  <footer class="bg-amber-50 border-t border-amber-100 mt-16">
+    <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-sm text-neutral-700">
+      <div>
+        <p class="font-semibold text-amber-800">Crédits</p>
+        <p class="mt-2">Projet communautaire open-source, inspiré par la culture Goun et dédié à sa transmission.</p>
+      </div>
+      <div>
+        <p class="font-semibold text-amber-800">Navigation</p>
+        <ul class="mt-2 space-y-1">
+          <li><a href="index.html" class="hover:text-amber-600">Accueil</a></li>
+          <li><a href="histoire.html" class="hover:text-amber-600">Histoire</a></li>
+          <li><a href="defis.html" class="hover:text-amber-600">Défis</a></li>
+          <li><a href="preservation.html" class="hover:text-amber-600">Préservation</a></li>
+          <li><a href="contribuer.html" class="hover:text-amber-600">Contribuer</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-semibold text-amber-800">Contact</p>
+        <p class="mt-2">📧 
+          <a href="mailto:contact@goungbe.org" class="underline hover:text-amber-600">contact@goungbe.org</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT JS OPTIMISÉ -->
+  <script>
+    async function chargerLexique() {
+      try {
+        const response = await fetch('data/lexique.txt');
+        const texte = await response.text();
+        const lignes = texte.split('\n').filter(l => l.trim() !== '');
+
+        let data = [];
+        lignes.forEach(ligne => {
+          const parts = ligne.trim().split(/\s{3,}/);
+          if (parts.length >= 3) {
+            const [goun, en, fr] = parts;
+            data.push({ goun, en, fr });
+          }
+        });
+
+        // Tri alphabétique sur Goun
+        data.sort((a, b) => a.goun.localeCompare(b.goun, 'fr', { sensitivity: 'base' }));
+
+        // Construire le tableau
+        let html = "";
+        data.forEach(item => {
+          html += `<tr>
+            <td class="p-3">${item.goun}</td>
+            <td class="p-3">${item.fr}</td>
+            <td class="p-3">${item.en}</td>
+          </tr>`;
+        });
+
+        document.getElementById('lexique-body').innerHTML = html;
+        document.getElementById('loading').style.display = "none";
+
+      } catch (error) {
+        console.error("Erreur de chargement du lexique :", error);
+        document.getElementById('lexique-body').innerHTML = 
+          `<tr><td colspan="3" class="p-3 text-center text-red-600">
+             Impossible de charger le lexique pour le moment.
+           </td></tr>`;
+        document.getElementById('loading').style.display = "none";
+      }
+    }
+
+    chargerLexique();
+  </script>
+
+</body>
+</html>
