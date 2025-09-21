@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lexique Goun traduit • Goungbe</title>
-  <meta name="description" content="Consultez des mots et prénoms Goun avec leurs traductions en français et en anglais.">
+  <meta name="description" content="Découvrez plus de 1900 mots et prénoms Goun traduits en français et anglais.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
     <p class="text-lg text-neutral-700 leading-relaxed text-center mb-8">
       Découvrez plus de <strong>1900 mots</strong> et <strong>prénoms Goun</strong> soigneusement collectés 
       et traduits en <strong>français</strong> et <strong>anglais</strong>. 
-      Cette base lexicale constitue l’une des grandes ressources numériques disponibles pour le Goungbe.
+      Cette base lexicale constitue l’une des plus grandes ressources numériques disponibles pour le Goungbe.
     </p>
 
     <!-- INDICATEUR DE CHARGEMENT -->
@@ -105,7 +105,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPT JS OPTIMISÉ -->
+  <!-- SCRIPT JS OPTIMISÉ AVEC SUPPRESSION DES DOUBLONS -->
   <script>
     async function chargerLexique() {
       try {
@@ -114,11 +114,18 @@
         const lignes = texte.split('\n').filter(l => l.trim() !== '');
 
         let data = [];
+        let dejaVu = new Set();
+
         lignes.forEach(ligne => {
           const parts = ligne.trim().split(/\s{3,}/);
           if (parts.length >= 3) {
             const [goun, en, fr] = parts;
-            data.push({ goun, en, fr });
+            // Utiliser goun+fr+en comme identifiant unique pour éviter doublons exacts
+            const cle = `${goun.toLowerCase()}|${fr.toLowerCase()}|${en.toLowerCase()}`;
+            if (!dejaVu.has(cle)) {
+              data.push({ goun, en, fr });
+              dejaVu.add(cle);
+            }
           }
         });
 
