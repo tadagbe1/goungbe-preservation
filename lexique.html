@@ -112,27 +112,26 @@
         const response = await fetch('data/lexique.txt');
         const texte = await response.text();
         const lignes = texte.split('\n').filter(l => l.trim() !== '');
-
+  
         let data = [];
         let dejaVu = new Set();
-
+  
         lignes.forEach(ligne => {
           const parts = ligne.trim().split(/\s{3,}/);
           if (parts.length >= 3) {
             const [goun, en, fr] = parts;
-            // Utiliser goun+fr+en comme identifiant unique pour éviter doublons exacts
-            const cle = `${goun.toLowerCase()}|${fr.toLowerCase()}|${en.toLowerCase()}`;
+            const cle = goun.trim().toLowerCase(); // ✅ identifiant basé uniquement sur le mot Goun
             if (!dejaVu.has(cle)) {
               data.push({ goun, en, fr });
               dejaVu.add(cle);
             }
           }
         });
-
-        // Tri alphabétique sur Goun
+  
+        // Tri alphabétique sur le mot Goun
         data.sort((a, b) => a.goun.localeCompare(b.goun, 'fr', { sensitivity: 'base' }));
-
-        // Construire le tableau
+  
+        // Construction HTML
         let html = "";
         data.forEach(item => {
           html += `<tr>
@@ -141,10 +140,10 @@
             <td class="p-3">${item.en}</td>
           </tr>`;
         });
-
+  
         document.getElementById('lexique-body').innerHTML = html;
         document.getElementById('loading').style.display = "none";
-
+  
       } catch (error) {
         console.error("Erreur de chargement du lexique :", error);
         document.getElementById('lexique-body').innerHTML = 
@@ -154,9 +153,7 @@
         document.getElementById('loading').style.display = "none";
       }
     }
-
+  
     chargerLexique();
   </script>
-
-</body>
-</html>
+  
