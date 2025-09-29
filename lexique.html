@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lexique Goun traduit • Gungbe</title>
-  <meta name="description" content="Découvrez plus de 1900 mots et prénoms Goun traduits en français et anglais.">
+  <title>Lexique Gungbe traduit • Gungbe</title>
+  <meta name="description" content="Découvrez plus de 1900 mots et prénoms Gungbe traduits en français et anglais.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -44,9 +44,9 @@
 
   <!-- CONTENU -->
   <main class="max-w-5xl mx-auto px-4 py-16">
-    <h1 class="text-4xl font-extrabold text-amber-700 mb-6 text-center">Lexique Goun traduit</h1>
+    <h1 class="text-4xl font-extrabold text-amber-700 mb-6 text-center">Lexique Gungbe traduit</h1>
     <p class="text-lg text-neutral-700 leading-relaxed text-center mb-8">
-      Découvrez plus de <strong>1900 mots</strong> et <strong>prénoms Goun</strong> soigneusement collectés 
+      Découvrez plus de <strong>1900 mots</strong> et <strong>prénoms Gungbe</strong> soigneusement collectés 
       et traduits en <strong>français</strong> et <strong>anglais</strong>. 
       Cette base lexicale constitue l’une des plus grandes ressources numériques disponibles pour le Gungbe.
     </p>
@@ -86,7 +86,7 @@
     <div class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-sm text-neutral-700">
       <div>
         <p class="font-semibold text-amber-800">Crédits</p>
-        <p class="mt-2">Projet communautaire open-source, inspiré par la culture Goun et dédié à sa transmission.</p>
+        <p class="mt-2">Projet communautaire open-source, inspiré par la culture Gungbe et dédié à sa transmission.</p>
       </div>
       <div>
         <p class="font-semibold text-amber-800">Navigation</p>
@@ -95,7 +95,7 @@
           <li><a href="histoire.html" class="hover:text-amber-600">Histoire</a></li>
           <li><a href="defis.html" class="hover:text-amber-600">Défis</a></li>
           <li><a href="preservation.html" class="hover:text-amber-600">Préservation</a></li>
-          <li><a href="contribuer.html" class="hover:text-amber-600">Contribuer</a></li>
+          
         </ul>
       </div>
       <div>
@@ -121,23 +121,23 @@
         lignes.forEach(ligne => {
           const parts = ligne.trim().split(/\s{3,}/);
           if (parts.length >= 3) {
-            const [goun, en, fr] = parts;
-            const cle = goun.trim().toLowerCase(); // ✅ identifiant basé uniquement sur le mot Goun
+            const [gungbe, en, fr] = parts;
+            const cle = gungbe.trim().toLowerCase(); // ✅ identifiant basé uniquement sur le mot Gungbe
             if (!dejaVu.has(cle)) {
-              data.push({ goun, en, fr });
+              data.push({ gungbe, en, fr });
               dejaVu.add(cle);
             }
           }
         });
   
-        // Tri alphabétique sur le mot Goun
-        data.sort((a, b) => a.goun.localeCompare(b.goun, 'fr', { sensitivity: 'base' }));
+        // Tri alphabétique sur le mot Gungbe
+        data.sort((a, b) => a.gungbe.localeCompare(b.gungbe, 'fr', { sensitivity: 'base' }));
   
         // Construction HTML
         let html = "";
         data.forEach(item => {
           html += `<tr>
-            <td class="p-3">${item.goun}</td>
+            <td class="p-3">${item.gungbe}</td>
             <td class="p-3">${item.fr}</td>
             <td class="p-3">${item.en}</td>
           </tr>`;
